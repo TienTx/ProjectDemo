@@ -1,0 +1,269 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/****************** default style *******************/
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 300;
+    src: url('//static-org.vcdn.vn/123fstatic/static/fonts/robotocondensed/RobotoCondensed-Light.woff') format('woff'), url('//static-org.vcdn.vn/123fstatic/static/fonts/robotocondensed/RobotoCondensed-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//static-org.vcdn.vn/123fstatic/static/fonts/robotocondensed/RobotoCondensed-Regular.woff') format('woff'), url('//static-org.vcdn.vn/123fstatic/static/fonts/robotocondensed/RobotoCondensed-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 700;
+    src: url('//static-org.vcdn.vn/123fstatic/static/fonts/robotocondensed/RobotoCondensed-Bold.woff') format('woff'), url('//static-org.vcdn.vn/123fstatic/static/fonts/robotocondensed/RobotoCondensed-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 300;
+    src: url('//static-org.vcdn.vn/123fstatic/static/fonts/robotoslab/RobotoSlab-Light.woff') format('woff'), url('//static-org.vcdn.vn/123fstatic/static/fonts/robotoslab/RobotoSlab-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//static-org.vcdn.vn/123fstatic/static/fonts/robotoslab/RobotoSlab-Regular.woff') format('woff'), url('//static-org.vcdn.vn/123fstatic/static/fonts/robotoslab/RobotoSlab-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 700;
+    src: url('//static-org.vcdn.vn/123fstatic/static/fonts/robotoslab/RobotoSlab-Bold.woff') format('woff'), url('//static-org.vcdn.vn/123fstatic/static/fonts/robotoslab/RobotoSlab-Bold.ttf') format('truetype');
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+body {
+    font-family: "Roboto Condensed", Helvetica, Arial;
+    color: #000;
+    position: relative;
+}
+body > *{
+    width: 100%;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+:focus {
+    outline: 0;
+}
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a { text-decoration:none; display: block;}
+*:focus { outline: none;}
+*::-moz-focus-inner { border: none;}
+
+button::-moz-focus-inner { border:medium none;}
+
+button::-moz-focus-inner { margin:0; padding:0;}
+
+input, select {
+    _zoom:1;
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+:focus {
+    outline: 0;
+}
+h1, h2, h3, h4, h5, h6{
+    font-size: 16px;
+}
+p,span,div{
+    cursor: default;
+}
+a *{
+    cursor: pointer;
+}
+a:hover{
+    text-decoration: none !important;
+}
+.clearfix {
+    clear: both;
+    zoom: 1;
+}
+.inside {
+    margin: 0 auto;
+    position: relative;
+    width: 1170px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.clearfix:before,.clearfix:after {
+    content: "";
+    display: block !important;
+    height: 0;
+    overflow: hidden;
+    font-size: 0;
+    visibility: hidden;
+}
+.clearfix:after {
+    clear: both;
+}
+.content{
+    width: 760px;
+    float: left;
+}
+.error{
+    color: red;
+}
+.hide{
+    display: none;
+}
+.show-tab-title{
+    border-radius: 20px 20px 0 0;
+    -moz-border-radius: 20px 20px 0 0;
+    -webkit-border-radius: 20px 20px 0 0;
+    background: #EEEEEE;
+}
+.show-tab-content{
+    z-index: 10 !important;
+    background: #EEEEEE;
+    display: block !important;
+}
+/* Smartphones (portrait and landscape) ----------- */
+@media all and (min-device-width : 320px){
+    .content{
+        min-height: 1400px;
+    }
+    .bookdetails{
+        min-height: 700px;
+    }
+    /*    .adInside{
+            width: 100%;
+        }*/
+}
+
+/*iPhone 6+ -----------*/ 
+@media all and (min-device-width: 414px){
+    .content{
+        min-height: 1000px;
+    }
+    .bookdetails{
+        min-height: 700px;
+    }
+    /*    .adInside{
+            width: 100%;
+        }*/
+}
+/*@media all and (min-device-width : 768px){
+    .adInside{
+        width: 100%;
+    }
+}
+@media all and (min-device-width : 800px){
+    .adInside{
+        width: 100%;
+    }
+}
+@media all and (min-device-width : 1024px){
+    .adInside{
+        width: 100%;
+    }
+}*/
+/*iPads (portrait and landscape) -----------*/ 
+@media all and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .content{
+        min-height: 1000px;
+    }
+    .bookdetails{
+        min-height: 700px;
+    }
+}
+/*iPads (portrait and landscape) -----------*/ 
+@media all and (min-device-width : 800px) and (max-device-width : 1024px) {
+    .content{
+        min-height: 1200px;
+    }
+    .bookdetails{
+        min-height: 700px;
+    }
+}
+
+/*Desktops and laptops -----------*/ 
+@media all and (min-width : 1224px) {
+    .content{
+        min-height: 1200px;
+    }
+    .bookdetails{
+        min-height: 700px;
+    }
+    /*    .adInside{
+            width: 100%;
+        }*/
+}
+
+/*Large screens -----------*/ 
+@media all and (min-width : 1824px) {
+    .content{
+        min-height: 1200px;
+    }
+    .bookdetails{
+        min-height: 700px;
+    }
+    /*    .adInside{
+            width: 100%;
+        }*/
+}
+/****************** back to top style *******************/
+#back-to-top {
+    position: fixed;
+    bottom: 44px;
+    right: 40px;
+    z-index: 550;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 25px;
+    color: #FFF;
+    cursor: pointer;
+    border: 0;
+    transition: opacity 0.2s ease-out;
+    opacity: 0.8;
+    background: #EE8942;
+    display: none;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+#back-to-top:hover {
+    opacity: 1;
+}
+#back-to-top.show {
+    display: block;
+}
