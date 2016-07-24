@@ -41,7 +41,7 @@ public class EntryDaoImpl extends BaseDao implements EntryDao {
                 + ") VALUES(?, ?, ?);";
         try {
             ps = conn.prepareStatement(sqlInsert);
-            ps.setInt(1, e.getIdEntry());
+            ps.setString(1, e.getIdEntry());
             ps.setString(2, s);
             ps.setDouble(3, e.getdSentiment());
 
@@ -61,7 +61,7 @@ public class EntryDaoImpl extends BaseDao implements EntryDao {
     }
 
     @Override
-    public Entry getEntryById(Integer id) {
+    public Entry getEntryById(String id) {
         String sqlSelect = "SELECT "
                 + "tblEntry.idEntry, "
                 + "tblEntry.sokCategory, "
@@ -70,14 +70,14 @@ public class EntryDaoImpl extends BaseDao implements EntryDao {
                 + "tblEntry.idEntry = ?;";
         try {
             ps = conn.prepareStatement(sqlSelect);
-            ps.setInt(1, id);
+            ps.setString(1, id);
 
             rs = getData(ps);
             if (rs != null && rs.next()) {
                 String[] s = rs.getString(2).split(",");
                 List<String> sokCategory = new ArrayList<>();
                 sokCategory.addAll(Arrays.asList(s));
-                Entry entry = new Entry(rs.getInt(1), sokCategory, rs.getDouble(3));
+                Entry entry = new Entry(rs.getString(1), sokCategory, rs.getDouble(3));
                 return entry;
             }
         } catch (Exception e) {

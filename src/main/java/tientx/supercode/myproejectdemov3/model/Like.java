@@ -13,10 +13,10 @@ import java.io.Serializable;
  */
 public class Like implements Serializable {
 
-    private Integer idLike;
+    private String idLike;
     private SetsOfEntries soeLike;
 
-    public void setIdLike(Integer idLike) {
+    public void setIdLike(String idLike) {
         this.idLike = idLike;
     }
 
@@ -24,7 +24,7 @@ public class Like implements Serializable {
         this.soeLike = soeLike;
     }
 
-    public Integer getIdLike() {
+    public String getIdLike() {
         return idLike;
     }
 
@@ -32,7 +32,7 @@ public class Like implements Serializable {
         return soeLike;
     }
 
-    public Like(Integer idLike, SetsOfEntries soeLike) {
+    public Like(String idLike, SetsOfEntries soeLike) {
         this.idLike = idLike;
         this.soeLike = soeLike;
     }

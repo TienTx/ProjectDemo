@@ -13,11 +13,11 @@ import java.io.Serializable;
  */
 public class CommentLike implements Serializable {
 
-    private Integer idCommentLike;
+    private String idCommentLike;
     private SetsOfEntries soePositive;
     private SetsOfEntries soeNegative;
 
-    public void setIdCommentLike(Integer idCommentLike) {
+    public void setIdCommentLike(String idCommentLike) {
         this.idCommentLike = idCommentLike;
     }
 
@@ -29,7 +29,7 @@ public class CommentLike implements Serializable {
         this.soeNegative = soeNegative;
     }
 
-    public Integer getIdCommentLike() {
+    public String getIdCommentLike() {
         return idCommentLike;
     }
 
@@ -41,7 +41,7 @@ public class CommentLike implements Serializable {
         return soeNegative;
     }
 
-    public CommentLike(Integer idCommentLike, SetsOfEntries soePositive, SetsOfEntries soeNegative) {
+    public CommentLike(String idCommentLike, SetsOfEntries soePositive, SetsOfEntries soeNegative) {
         this.idCommentLike = idCommentLike;
         this.soePositive = soePositive;
         this.soeNegative = soeNegative;

@@ -14,12 +14,12 @@ import java.util.List;
  */
 public class Community implements Serializable {
 
-    private Integer idCommunity;
+    private String idCommunity;
     private List<String> sokName;
     private List<String> sokCategory;
     private List<String> sokDescription;
 
-    public void setIdCommunity(Integer idCommunity) {
+    public void setIdCommunity(String idCommunity) {
         this.idCommunity = idCommunity;
     }
 
@@ -35,7 +35,7 @@ public class Community implements Serializable {
         this.sokDescription = sokDescription;
     }
 
-    public Integer getIdCommunity() {
+    public String getIdCommunity() {
         return idCommunity;
     }
 
@@ -51,7 +51,7 @@ public class Community implements Serializable {
         return sokDescription;
     }
 
-    public Community(Integer idCommunity, List<String> sokName, List<String> sokCategory, List<String> sokDescription) {
+    public Community(String idCommunity, List<String> sokName, List<String> sokCategory, List<String> sokDescription) {
         this.idCommunity = idCommunity;
         this.sokName = sokName;
         this.sokCategory = sokCategory;

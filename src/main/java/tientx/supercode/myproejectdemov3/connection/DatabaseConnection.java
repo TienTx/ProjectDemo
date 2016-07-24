@@ -25,8 +25,6 @@ public class DatabaseConnection {
     private DatabaseConnection() {
         Properties properties = new Properties();
         try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPJ?user=root&password=&characterEncoding=UTF-8");
             properties.load(Thread.currentThread().getContextClassLoader()
                     .getResourceAsStream("properties/dbconfig.properties"));
             Class.forName(properties.getProperty("DRIVER_CLASSNAME"));
@@ -50,5 +48,4 @@ public class DatabaseConnection {
 //    public static void main(String[] args) {
 //        System.out.println(DatabaseConnection.getInstance().getConnection().toString());
 //    }
-
 }

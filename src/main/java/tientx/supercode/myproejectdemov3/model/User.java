@@ -13,19 +13,19 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
 
-    private Integer idUser;
-    private String fullName;
+    private String idUser;
+    private String screenName;
     private Post post;
     private Like like;
     private Join join;
     private CommentLike commentlike;
 
-    public void setIdUser(Integer idUser) {
+    public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setScreenName(String screenName) {
+        this.screenName = screenName;
     }
 
     public void setPost(Post post) {
@@ -44,12 +44,12 @@ public class User implements Serializable {
         this.commentlike = commentlike;
     }
 
-    public Integer getIdUser() {
+    public String getIdUser() {
         return idUser;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getScreenName() {
+        return screenName;
     }
 
     public Post getPost() {
@@ -68,9 +68,9 @@ public class User implements Serializable {
         return commentlike;
     }
 
-    public User(Integer idUser, String fullName, Post post, Like like, Join join, CommentLike commentlike) {
+    public User(String idUser, String screenName, Post post, Like like, Join join, CommentLike commentlike) {
         this.idUser = idUser;
-        this.fullName = fullName;
+        this.screenName = screenName;
         this.post = post;
         this.like = like;
         this.join = join;

@@ -14,10 +14,10 @@ import java.util.List;
  */
 public class SetsOfCommunities implements Serializable {
 
-    private Integer idSetsOfCommunities;
+    private String idSetsOfCommunities;
     private List<Community> listCommunities;
 
-    public void setIdSetsOfCommunities(Integer idSetsOfCommunities) {
+    public void setIdSetsOfCommunities(String idSetsOfCommunities) {
         this.idSetsOfCommunities = idSetsOfCommunities;
     }
 
@@ -25,7 +25,7 @@ public class SetsOfCommunities implements Serializable {
         this.listCommunities = listCommunities;
     }
 
-    public Integer getIdSetsOfCommunities() {
+    public String getIdSetsOfCommunities() {
         return idSetsOfCommunities;
     }
 
@@ -33,7 +33,7 @@ public class SetsOfCommunities implements Serializable {
         return listCommunities;
     }
 
-    public SetsOfCommunities(Integer idSetsOfCommunities, List<Community> listCommunities) {
+    public SetsOfCommunities(String idSetsOfCommunities, List<Community> listCommunities) {
         this.idSetsOfCommunities = idSetsOfCommunities;
         this.listCommunities = listCommunities;
     }

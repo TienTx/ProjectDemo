@@ -14,11 +14,11 @@ import java.util.List;
  */
 public class Entry implements Serializable {
 
-    private Integer idEntry;
+    private String idEntry;
     private List<String> sokCategory;
     private Double dSentiment;
 
-    public void setIdEntry(Integer idEntry) {
+    public void setIdEntry(String idEntry) {
         this.idEntry = idEntry;
     }
 
@@ -30,7 +30,7 @@ public class Entry implements Serializable {
         this.dSentiment = dSentiment;
     }
 
-    public Integer getIdEntry() {
+    public String getIdEntry() {
         return idEntry;
     }
 
@@ -42,7 +42,7 @@ public class Entry implements Serializable {
         return dSentiment;
     }
 
-    public Entry(Integer idEntry, List<String> sokCategory, Double dSentiment) {
+    public Entry(String idEntry, List<String> sokCategory, Double dSentiment) {
         this.idEntry = idEntry;
         this.sokCategory = sokCategory;
         this.dSentiment = dSentiment;

@@ -15,5 +15,5 @@ public interface EntryDao {
 
     boolean insertEntry(Entry e);
 
-    Entry getEntryById(Integer id);
+    Entry getEntryById(String id);
 }

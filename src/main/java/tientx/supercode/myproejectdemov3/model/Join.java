@@ -13,10 +13,10 @@ import java.io.Serializable;
  */
 public class Join implements Serializable {
 
-    private Integer idJoin;
+    private String idJoin;
     private SetsOfCommunities socJoin;
 
-    public void setIdJoin(Integer idJoin) {
+    public void setIdJoin(String idJoin) {
         this.idJoin = idJoin;
     }
 
@@ -24,7 +24,7 @@ public class Join implements Serializable {
         this.socJoin = socJoin;
     }
 
-    public Integer getIdJoin() {
+    public String getIdJoin() {
         return idJoin;
     }
 
@@ -32,7 +32,7 @@ public class Join implements Serializable {
         return socJoin;
     }
 
-    public Join(Integer idJoin, SetsOfCommunities socJoin) {
+    public Join(String idJoin, SetsOfCommunities socJoin) {
         this.idJoin = idJoin;
         this.socJoin = socJoin;
     }

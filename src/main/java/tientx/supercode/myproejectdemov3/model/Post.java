@@ -13,10 +13,10 @@ import java.io.Serializable;
  */
 public class Post implements Serializable {
 
-    private Integer idPost;
+    private String idPost;
     private SetsOfEntries soePost;
 
-    public void setIdPost(Integer idPost) {
+    public void setIdPost(String idPost) {
         this.idPost = idPost;
     }
 
@@ -24,7 +24,7 @@ public class Post implements Serializable {
         this.soePost = soePost;
     }
 
-    public Integer getIdPost() {
+    public String getIdPost() {
         return idPost;
     }
 
@@ -32,7 +32,7 @@ public class Post implements Serializable {
         return soePost;
     }
 
-    public Post(Integer idPost, SetsOfEntries soePost) {
+    public Post(String idPost, SetsOfEntries soePost) {
         this.idPost = idPost;
         this.soePost = soePost;
     }

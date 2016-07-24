@@ -14,10 +14,10 @@ import java.util.List;
  */
 public class SetsOfEntries implements Serializable {
 
-    private Integer idSetsOfEntries;
+    private String idSetsOfEntries;
     private List<Entry> listEntries;
 
-    public void setIdSetsOfEntries(Integer idSetsOfEntries) {
+    public void setIdSetsOfEntries(String idSetsOfEntries) {
         this.idSetsOfEntries = idSetsOfEntries;
     }
 
@@ -25,7 +25,7 @@ public class SetsOfEntries implements Serializable {
         this.listEntries = listEntries;
     }
 
-    public Integer getIdSetsOfEntries() {
+    public String getIdSetsOfEntries() {
         return idSetsOfEntries;
     }
 
@@ -33,7 +33,7 @@ public class SetsOfEntries implements Serializable {
         return listEntries;
     }
 
-    public SetsOfEntries(Integer idSetsOfEntries, List<Entry> listEntries) {
+    public SetsOfEntries(String idSetsOfEntries, List<Entry> listEntries) {
         this.idSetsOfEntries = idSetsOfEntries;
         this.listEntries = listEntries;
     }
