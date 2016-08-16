@@ -5,6 +5,7 @@
  */
 package tientx.supercode.myproejectdemov3.dao;
 
+import java.util.ArrayList;
 import tientx.supercode.myproejectdemov3.model.User;
 import twitter4j.PagableResponseList;
 
@@ -17,4 +18,6 @@ public interface UserDao {
     boolean insertUser(User user);
 
     boolean insertListUserUseBatch(PagableResponseList<twitter4j.User> list);
+
+    ArrayList<User> getAll();
 }

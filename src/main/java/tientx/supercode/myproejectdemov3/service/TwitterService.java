@@ -15,7 +15,8 @@ import twitter4j.User;
  *
  * @author zOzDarKzOz
  */
-public interface TwitterService {
+public interface TwitterService
+{
 
     ResponseList<Status> getTwFavorites(String screenName) throws TwitterException, InterruptedException;
 
@@ -25,16 +26,24 @@ public interface TwitterService {
 
     ResponseList<Status> getTwUserTimeline(Long idUser) throws TwitterException, InterruptedException;
 
+    ResponseList<Status> getTwUserTimeline(Long idUser, Integer count) throws TwitterException, InterruptedException;
+
     ResponseList<Status> getTwUserHomeTimeline(String screenName) throws TwitterException, InterruptedException;
 
     ResponseList<Status> getTwUserHomeTimeline(Long idUser) throws TwitterException, InterruptedException;
+
+    ResponseList<Status> getTwUserHomeTimeline(Long idUser, Integer count)
+            throws TwitterException, InterruptedException;
 
     PagableResponseList<User> getTwUserFriendList(String screenName) throws TwitterException, InterruptedException;
 
     PagableResponseList<User> getTwUserFriendList(Long idUser) throws TwitterException, InterruptedException;
 
-    PagableResponseList<User> getTwUserFollowerList(String screenName, Long cursor, int count) throws TwitterException, InterruptedException;
+    PagableResponseList<User> getTwUserFollowerList(String screenName,
+                                                    Long cursor, Integer count)
+            throws TwitterException, InterruptedException;
 
-    PagableResponseList<User> getTwUserFollowerList(Long idUser, Long cursor, int count) throws TwitterException, InterruptedException;
+    PagableResponseList<User> getTwUserFollowerList(Long idUser, Long cursor,
+                                                    Integer count) throws TwitterException, InterruptedException;
 
 }

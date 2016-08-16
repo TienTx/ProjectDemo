@@ -25,10 +25,10 @@ public class TwitterConnection {
                 .setOAuthConsumerKey(TwitterConfig.API_KEY)
                 .setOAuthConsumerSecret(TwitterConfig.API_SECRET)
                 .setOAuthAccessToken(TwitterConfig.ACCES_TOKEN)
-                .setOAuthAccessTokenSecret(TwitterConfig.ACCES_TOKEN_SECRET).setHttpConnectionTimeout(100000)
-                //                .setOAuthAccessTokenSecret(TwitterConfig.ACCES_TOKEN_SECRET).setHttpConnectionTimeout(100000);
-                .setHttpProxyHost(TwitterConfig.PROXY_HOST)
-                .setHttpProxyPort(TwitterConfig.PROXY_PORT);
+//                .setOAuthAccessTokenSecret(TwitterConfig.ACCES_TOKEN_SECRET).setHttpConnectionTimeout(100000)
+                                .setOAuthAccessTokenSecret(TwitterConfig.ACCES_TOKEN_SECRET).setHttpConnectionTimeout(100000);
+//                .setHttpProxyHost(TwitterConfig.PROXY_HOST)
+//                .setHttpProxyPort(TwitterConfig.PROXY_PORT);
         TwitterFactory factory = new TwitterFactory(cb.build());
         twitter = factory.getInstance();
     }

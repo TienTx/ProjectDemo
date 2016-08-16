@@ -129,6 +129,7 @@
             <groupId>de.julielab</groupId>
             <artifactId>aliasi-lingpipe</artifactId>
             <version>4.1.0</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
 

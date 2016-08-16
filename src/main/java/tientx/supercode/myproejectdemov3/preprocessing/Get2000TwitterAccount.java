@@ -14,11 +14,13 @@ import twitter4j.User;
  *
  * @author zOzDarKzOz
  */
-public class Get500TwitterAccount {
+public class Get2000TwitterAccount
+{
 
-    public static PagableResponseList<User> get1000TwitterUser(
+    public static PagableResponseList<User> get(
             TwitterService ts, String originUserScreenName
-    ) {
+    )
+    {
         try {
             PagableResponseList<User> listFollower = ts.getTwUserFollowerList(
                     originUserScreenName,
@@ -29,7 +31,7 @@ public class Get500TwitterAccount {
             Thread.sleep(15000);
 
             long cursor = listFollower.getNextCursor();
-            for (int i = 2; i <= 5; i++) {
+            for (int i = 2; i <= 10; i++) {
                 PagableResponseList<User> list = ts.getTwUserFollowerList(
                         originUserScreenName,
                         cursor,

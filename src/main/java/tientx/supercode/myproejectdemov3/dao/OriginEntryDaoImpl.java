@@ -7,27 +7,34 @@ package tientx.supercode.myproejectdemov3.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import tientx.supercode.myproejectdemov3.model.User;
-import twitter4j.PagableResponseList;
+import tientx.supercode.myproejectdemov3.model.OriginEntry;
+import twitter4j.ResponseList;
+import twitter4j.Status;
 
 /**
  *
  * @author zOzDarKzOz
  */
-public class UserDaoImpl extends BaseDao implements UserDao {
+public class OriginEntryDaoImpl
+        extends BaseDao
+        implements OriginEntryDao
+{
 
     private PreparedStatement ps = null;
     private ResultSet rs = null;
 
     @Override
-    public boolean insertUser(User user) {
-        String sqlInsert = "INSERT INTO tblUser(idUser, screenName) "
-                + "VALUES(?, ?);";
+    public boolean insertOriginEntry(OriginEntry oe)
+    {
+        String sqlInsert = "SET NAMES utf8mb4;INSERT INTO tblOriginEntry("
+                           + "idOriginEntry, createDate, content, idUser"
+                           + ") VALUES(?, ?, ?, ?);";
         try {
             ps = conn.prepareStatement(sqlInsert);
-            ps.setString(1, user.getIdUser());
-            ps.setString(2, user.getScreenName());
+            ps.setString(1, oe.getIdOriginEntry());
+            ps.setDate(2, oe.getCreateDate());
+            ps.setString(3, oe.getsContent());
+            ps.setString(4, oe.getIdUser());
 
             return insert(ps);
         } catch (Exception e) {
@@ -45,16 +52,23 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public boolean insertListUserUseBatch(PagableResponseList<twitter4j.User> list) {
+    public boolean insertListOriginEntryUseBatch(ResponseList<Status> list,
+                                                 Long id)
+    {
         boolean isError = false;
-        String sqlInsert = "INSERT INTO tblUser(idUser, screenName) "
-                + "VALUES(?, ?);";
+        String sqlInsert = "INSERT INTO tblOriginEntry("
+                           + "idOriginEntry, createDate, content, idUser"
+                           + ") VALUES(?, ?, ?, ?);";
         try {
             ps = conn.prepareStatement(sqlInsert);
             list.stream().forEach((l) -> {
                 try {
                     ps.setString(1, l.getId() + "");
-                    ps.setString(2, l.getScreenName());
+                    java.util.Date utilDate = l.getCreatedAt();
+                    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                    ps.setDate(2, sqlDate);
+                    ps.setString(3, l.getText());
+                    ps.setString(4, id + "");
                     ps.addBatch();
                     ps.clearParameters();
                 } catch (Exception e) {
@@ -80,39 +94,6 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             }
         }
         return false;
-    }
-
-    @Override
-    public ArrayList<User> getAll() {
-        String sqlSelect = "SELECT * FROM tblUser;";
-        try {
-            ps = conn.prepareStatement(sqlSelect);
-            rs = getData(ps);
-            if (rs != null) {
-                ArrayList<User> list = new ArrayList<>();
-                while (rs.next()) {
-                    User user = new User(rs.getString(1), rs.getString(2), null, null, null, null);
-                    list.add(user);
-                }
-                if (list != null) {
-                    return list;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
     }
 
 }
