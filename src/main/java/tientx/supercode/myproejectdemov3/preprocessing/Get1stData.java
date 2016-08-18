@@ -9,8 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import tientx.supercode.myproejectdemov3.dao.UserDao;
-import tientx.supercode.myproejectdemov3.dao.UserDaoImpl;
+import tientx.supercode.myproejectdemov3.config.Variable;
 import tientx.supercode.myproejectdemov3.service.TwitterService;
 import tientx.supercode.myproejectdemov3.service.TwitterServiceImpl;
 import tientx.supercode.myproejectdemov3.service.UserService;
@@ -32,6 +31,7 @@ public class Get1stData
 //    private static final String ORIGIN_USER_SCREEN_NAME = "JVevermind";
     private static final String ORIGIN_USER_SCREEN_NAME = "BillGates";
 //    private static final String ORIGIN_USER_SCREEN_NAME = "tim_cook";
+    private static final String CURRENT_DATE = "2016-7-18";
 
     public static void preUserData()
     {
@@ -53,10 +53,10 @@ public class Get1stData
         try {
             ArrayList<tientx.supercode.myproejectdemov3.model.User> listUser
                                                                     = us.getAll();
-//            int l = listUser.size();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = sdf.parse("2016-7-16");
-            for (int i = 2; i < 3; i++) {
+            int l = listUser.size();
+            SimpleDateFormat sdf = new SimpleDateFormat(Variable.DEFAULT_DATE_FORMAT);
+            Date date = sdf.parse(CURRENT_DATE);
+            for (int i = 0; i < l; i++) {
                 ResponseList<Status> listStatus = GetOriginEntry.getOriginEntry(
                         ts,
                         Long.parseLong(listUser.get(i).getIdUser())
@@ -67,6 +67,7 @@ public class Get1stData
                         Date createDate = listStatus.get(j).getCreatedAt();
                         if (createDate.after(date)) {
                             System.out.println(createDate.toString());
+                            System.out.println(listStatus.get(j).getText());
                         } else {
                             listStatus.remove(j);
                             ll--;

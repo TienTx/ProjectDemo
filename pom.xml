@@ -106,10 +106,13 @@
             <version>${spring.version}</version>
         </dependency>
         
-        <!--        <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>sqljdbc4</artifactId>
+<!--        <dependency> 
+            <groupId>com.microsoft.sqlserver</groupId> 
+            <artifactId>sqljdbc4</artifactId> 
             <version>4.0</version>
+            <scope>system</scope>
+            <systemPath>C:/ProjectDemo/src/lib/sqljdbc4.jar</systemPath>
+            <optional>true</optional>
         </dependency>-->
 
         <dependency>

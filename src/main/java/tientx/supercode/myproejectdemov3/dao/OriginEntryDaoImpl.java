@@ -27,6 +27,7 @@ public class OriginEntryDaoImpl
     public boolean insertOriginEntry(OriginEntry oe)
     {
         String sqlInsert = "SET NAMES utf8mb4;INSERT INTO tblOriginEntry("
+//        String sqlInsert = "INSERT INTO tblOriginEntry("
                            + "idOriginEntry, createDate, content, idUser"
                            + ") VALUES(?, ?, ?, ?);";
         try {
