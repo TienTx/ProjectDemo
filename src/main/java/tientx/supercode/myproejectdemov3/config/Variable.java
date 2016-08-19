@@ -18,4 +18,6 @@ public class Variable
     public static final String SENTIMENT_CLASSIFFIER_FILE_NAME = "C:/data_training/sentiment_data_training/classifier.txt";
     public static final String SENTIMENT_CLASSIFFIER_DATATRAIN_PATH = "C:/data_training/sentiment_data_training";
     public static final String SENTIMENT_CLASSIFFIER_DATA_PATH = "C:/data_training/sentiment_data";
+    public static final String CATEGORY_CLASSIFFIER_FILE_NAME = "C:/data_training/four_news_groups/classifier.txt";
+    public static final String CATEGORY_CLASSIFFIER_DATATRAIN_PATH = "C:/data_training/four_news_groups/4news-train";
 }

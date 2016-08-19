@@ -9,7 +9,7 @@ package tientx.supercode.myproejectdemov3.service;
  *
  * @author zOzDarKzOz
  */
-public interface SentimentTraining {
+public interface SentimentTrainingService {
 //    void train(String path);
     boolean train(String path);
     String classify(String text);

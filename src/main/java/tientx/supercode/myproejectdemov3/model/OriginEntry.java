@@ -12,53 +12,89 @@ import java.sql.Date;
  *
  * @author zOzDarKzOz
  */
-public class OriginEntry implements Serializable {
+public class OriginEntry
+        implements Serializable
+{
 
     private String idOriginEntry;
     private Date createDate;
     private String sContent;
     private String idUser;
+    private String sCategory;
+    private String sSentiment;
 
-    public OriginEntry() {
+    public OriginEntry()
+    {
     }
 
-    public OriginEntry(String idOriginEntry, Date createDate, String sContent, String idUser) {
-        this.idOriginEntry = idOriginEntry;
-        this.createDate = createDate;
-        this.sContent = sContent;
-        this.idUser = idUser;
-    }
-
-    public String getIdOriginEntry() {
+    public String getIdOriginEntry()
+    {
         return idOriginEntry;
     }
 
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public String getsContent() {
-        return sContent;
-    }
-
-    public String getIdUser() {
-        return idUser;
-    }
-
-    public void setIdOriginEntry(String idOriginEntry) {
+    public void setIdOriginEntry(String idOriginEntry)
+    {
         this.idOriginEntry = idOriginEntry;
     }
 
-    public void setCreateDate(Date createDate) {
+    public Date getCreateDate()
+    {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate)
+    {
         this.createDate = createDate;
     }
 
-    public void setsContent(String sContent) {
+    public String getsContent()
+    {
+        return sContent;
+    }
+
+    public void setsContent(String sContent)
+    {
         this.sContent = sContent;
     }
 
-    public void setIdUser(String idUser) {
+    public String getIdUser()
+    {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser)
+    {
         this.idUser = idUser;
     }
-    
+
+    public String getsCategory()
+    {
+        return sCategory;
+    }
+
+    public void setsCategory(String sCategory)
+    {
+        this.sCategory = sCategory;
+    }
+
+    public String getsSentiment()
+    {
+        return sSentiment;
+    }
+
+    public void setsSentiment(String sSentiment)
+    {
+        this.sSentiment = sSentiment;
+    }
+
+    public OriginEntry(String idOriginEntry, Date createDate, String sContent,
+                       String idUser, String sCategory, String sSentiment)
+    {
+        this.idOriginEntry = idOriginEntry;
+        this.createDate = createDate;
+        this.sContent = sContent;
+        this.idUser = idUser;
+        this.sCategory = sCategory;
+        this.sSentiment = sSentiment;
+    }
 }

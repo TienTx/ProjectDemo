@@ -37,24 +37,30 @@ import org.springframework.web.servlet.view.JstlView;
     "tientx.supercode.myproejectdemov3.validator",
     "tientx.supercode.myproejectdemov3.tool"
 })
-public class SpringWebConfig extends WebMvcConfigurerAdapter {
+public class SpringWebConfig
+        extends WebMvcConfigurerAdapter
+{
 
     private static final Charset UTF8 = Charset.forName("UTF-8");
 
     @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+    public void configureMessageConverters(
+            List<HttpMessageConverter<?>> converters)
+    {
         StringHttpMessageConverter stringConverter = new StringHttpMessageConverter();
         stringConverter.setSupportedMediaTypes(Arrays.asList(new MediaType("text", "plain", UTF8)));
         converters.add(stringConverter);
     }
 
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(ResourceHandlerRegistry registry)
+    {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 
     @Bean
-    public InternalResourceViewResolver viewResolver() {
+    public InternalResourceViewResolver viewResolver()
+    {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setPrefix("/WEB-INF/views/jsp/");
@@ -63,7 +69,8 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public ResourceBundleMessageSource messageSource() {
+    public ResourceBundleMessageSource messageSource()
+    {
         ResourceBundleMessageSource rbms = new ResourceBundleMessageSource();
         rbms.setBasenames(new String[]{"properties/messages", "properties/validation"});
         return rbms;

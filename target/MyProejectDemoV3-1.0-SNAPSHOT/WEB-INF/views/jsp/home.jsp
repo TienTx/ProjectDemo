@@ -7,10 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<%@include file="template/header.jsp" %>
+<%@include file="fragments/header.jsp" %>
 
 <section class="container inside clearfix">
     asd
 </section>
 
-<%@include file="template/footer.jsp" %>
+<%@include file="fragments/footer.jsp" %>

@@ -22,10 +22,10 @@ import java.util.Random;
 public class CrossValidateNews {
 
     private static final File TRAINING_DIR
-            = new File("C:/ProjectDemo/src/main/java/tientx/supercode/myproejectdemov3/data/fourNewsGroups/4news-test");
+            = new File("C:/data_training/fourNewsGroups/4news-train");
 
     private static final File TESTING_DIR
-            = new File("C:/ProjectDemo/src/main/java/tientx/supercode/myproejectdemov3/data/fourNewsGroups/4news-test");
+            = new File("C:/data_training/fourNewsGroups/4news-test");
 
     private static final String[] CATEGORIES
             = {

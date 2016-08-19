@@ -28,8 +28,8 @@ import tientx.supercode.myproejectdemov3.config.Variable;
  *
  * @author zOzDarKzOz
  */
-public class SentimentTrainingImpl
-        implements SentimentTraining
+public class SentimentTrainingServiceImpl
+        implements SentimentTrainingService
 {
 
     private static final String[] CATEGORIES = {"NEGATIVE", "NEUTRAL", "POSITIVE"};

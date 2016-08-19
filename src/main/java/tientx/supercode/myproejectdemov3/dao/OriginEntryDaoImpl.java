@@ -7,6 +7,7 @@ package tientx.supercode.myproejectdemov3.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import tientx.supercode.myproejectdemov3.model.OriginEntry;
 import twitter4j.ResponseList;
 import twitter4j.Status;
@@ -27,7 +28,7 @@ public class OriginEntryDaoImpl
     public boolean insertOriginEntry(OriginEntry oe)
     {
         String sqlInsert = "SET NAMES utf8mb4;INSERT INTO tblOriginEntry("
-//        String sqlInsert = "INSERT INTO tblOriginEntry("
+                           //        String sqlInsert = "INSERT INTO tblOriginEntry("
                            + "idOriginEntry, createDate, content, idUser"
                            + ") VALUES(?, ?, ?, ?);";
         try {
@@ -95,6 +96,83 @@ public class OriginEntryDaoImpl
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean updateListOriginEntryUseBatch(ArrayList<OriginEntry> list)
+    {
+        boolean isError = false;
+        String sqlInsert = "UPDATE tblOriginEntry "
+                           + "SET "
+                           + "category = ?, "
+                           + "sentiment = ? "
+                           + "WHERE idOriginEntry = ?;";
+        try {
+            ps = conn.prepareStatement(sqlInsert);
+            list.stream().forEach((l) -> {
+                try {
+                    ps.setString(1, l.getsCategory());
+                    ps.setString(2, l.getsSentiment());
+                    ps.setString(3, l.getIdOriginEntry());
+                    ps.addBatch();
+                    ps.clearParameters();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+            int[] kq = ps.executeBatch();
+            if (kq != null && kq.length > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            isError = true;
+        } finally {
+            try {
+                if (isError) {
+                    conn.rollback();
+                } else {
+                    conn.commit();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public ArrayList<OriginEntry> getAll()
+    {
+        String sqlSelect = "SELECT * FROM tblOriginEntry;";
+        try {
+            ps = conn.prepareStatement(sqlSelect);
+            rs = getData(ps);
+            if (rs != null) {
+                ArrayList<OriginEntry> list = new ArrayList<>();
+                while (rs.next()) {
+                    OriginEntry oe = new OriginEntry(rs.getString(1), rs.getDate(2), rs.getString(3), rs.getString(4), null, rs.getString(6));
+                    list.add(oe);
+                }
+                if (list != null) {
+                    return list;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
 }

@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@include file="template/header.jsp" %>
+<%@include file="fragments/header.jsp" %>
 
 <section class="clearfix">
     <h1>Error Page</h1>
@@ -14,4 +14,4 @@
     -->
 </section>
 
-<%@include file="template/footer.jsp" %>
+<%@include file="fragments/footer.jsp" %>

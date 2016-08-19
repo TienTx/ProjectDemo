@@ -6,6 +6,7 @@
 package tientx.supercode.myproejectdemov3.service;
 
 import java.util.ArrayList;
+import tientx.supercode.myproejectdemov3.model.OriginEntry;
 import twitter4j.PagableResponseList;
 import tientx.supercode.myproejectdemov3.model.User;
 import twitter4j.ResponseList;
@@ -23,4 +24,6 @@ public interface UserService
     ArrayList<User> getAll();
 
     boolean addListOriginEntryUseBatch(ResponseList<Status> list, Long id);
+
+    boolean editListOriginEntryUseBatch(ArrayList<OriginEntry> list);
 }

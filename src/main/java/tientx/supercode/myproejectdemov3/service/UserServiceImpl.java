@@ -10,6 +10,7 @@ import tientx.supercode.myproejectdemov3.dao.OriginEntryDao;
 import tientx.supercode.myproejectdemov3.dao.OriginEntryDaoImpl;
 import tientx.supercode.myproejectdemov3.dao.UserDao;
 import tientx.supercode.myproejectdemov3.dao.UserDaoImpl;
+import tientx.supercode.myproejectdemov3.model.OriginEntry;
 import twitter4j.PagableResponseList;
 import twitter4j.ResponseList;
 import twitter4j.Status;
@@ -48,6 +49,12 @@ public class UserServiceImpl
     public boolean addListOriginEntryUseBatch(ResponseList<Status> list, Long id)
     {
         return oeDao.insertListOriginEntryUseBatch(list, id);
+    }
+
+    @Override
+    public boolean editListOriginEntryUseBatch(ArrayList<OriginEntry> list)
+    {
+        return oeDao.updateListOriginEntryUseBatch(list);
     }
 
 }
