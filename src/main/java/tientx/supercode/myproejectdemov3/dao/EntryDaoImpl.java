@@ -16,13 +16,17 @@ import tientx.supercode.myproejectdemov3.model.Entry;
  *
  * @author zOzDarKzOz
  */
-public class EntryDaoImpl extends BaseDao implements EntryDao {
+public class EntryDaoImpl
+        extends BaseDao
+        implements EntryDao
+{
 
     private PreparedStatement ps = null;
     private ResultSet rs = null;
 
     @Override
-    public boolean insertEntry(Entry e) {
+    public boolean insert(Entry e)
+    {
         String s = "";
         int size;
         if (e.getSokCategory() != null && (size = e.getSokCategory().size()) > 0) {
@@ -35,10 +39,10 @@ public class EntryDaoImpl extends BaseDao implements EntryDao {
             }
         }
         String sqlInsert = "INSERT INTO tblEntry("
-                + "idSetsOfEntries, "
-                + "sokCategory, "
-                + "dSentiment "
-                + ") VALUES(?, ?, ?);";
+                           + "idSetsOfEntries, "
+                           + "sokCategory, "
+                           + "dSentiment "
+                           + ") VALUES(?, ?, ?);";
         try {
             ps = conn.prepareStatement(sqlInsert);
             ps.setString(1, e.getIdEntry());
@@ -61,13 +65,14 @@ public class EntryDaoImpl extends BaseDao implements EntryDao {
     }
 
     @Override
-    public Entry getEntryById(String id) {
+    public Entry getById(String id)
+    {
         String sqlSelect = "SELECT "
-                + "tblEntry.idEntry, "
-                + "tblEntry.sokCategory, "
-                + "tblEntry.dSentiment "
-                + "FROM tblEntry WHERE "
-                + "tblEntry.idEntry = ?;";
+                           + "tblEntry.idEntry, "
+                           + "tblEntry.sokCategory, "
+                           + "tblEntry.dSentiment "
+                           + "FROM tblEntry WHERE "
+                           + "tblEntry.idEntry = ?;";
         try {
             ps = conn.prepareStatement(sqlSelect);
             ps.setString(1, id);

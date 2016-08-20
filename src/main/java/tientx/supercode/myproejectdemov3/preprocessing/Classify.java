@@ -67,11 +67,10 @@ public class Classify
                 for (OriginEntry content : list) {
                     String text = content.getsContent();
                     String cat = ct.classify(text);
-//                String sent = st.classify(text);
-                    System.out.println(j + "--------Category: " + cat);
-//                System.out.println(i + "--------Category: " + cat + "\tSentiment: " + sent);
+                    String sent = st.classify(text);
+                    System.out.println(j + "--------Category: " + cat + "\tSentiment: " + sent);
                     content.setsCategory(cat);
-//                content.setsSentiment(sent);
+                    content.setsSentiment(sent);
                     j++;
                 }
                 boolean isOK = us.editListOriginEntryUseBatch(listContent);

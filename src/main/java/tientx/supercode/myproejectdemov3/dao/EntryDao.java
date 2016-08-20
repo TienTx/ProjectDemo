@@ -13,7 +13,7 @@ import tientx.supercode.myproejectdemov3.model.Entry;
  */
 public interface EntryDao {
 
-    boolean insertEntry(Entry e);
+    boolean insert(Entry e);
 
-    Entry getEntryById(String id);
+    Entry getById(String id);
 }
