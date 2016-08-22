@@ -5,10 +5,14 @@
  */
 package tientx.supercode.myproejectdemov3.dao;
 
+import tientx.supercode.myproejectdemov3.model.Post;
+
 /**
  *
  * @author zOzDarKzOz
  */
-public interface PostDao {
-    
+public interface PostDao
+{
+
+    Post getByUserId(Long id);
 }

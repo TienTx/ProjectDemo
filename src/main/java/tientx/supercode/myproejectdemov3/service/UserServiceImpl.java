@@ -6,11 +6,15 @@
 package tientx.supercode.myproejectdemov3.service;
 
 import java.util.ArrayList;
+import tientx.supercode.myproejectdemov3.dao.LikeDao;
 import tientx.supercode.myproejectdemov3.dao.OriginEntryDao;
 import tientx.supercode.myproejectdemov3.dao.OriginEntryDaoImpl;
+import tientx.supercode.myproejectdemov3.dao.PostDao;
 import tientx.supercode.myproejectdemov3.dao.UserDao;
 import tientx.supercode.myproejectdemov3.dao.UserDaoImpl;
+import tientx.supercode.myproejectdemov3.model.Like;
 import tientx.supercode.myproejectdemov3.model.OriginEntry;
+import tientx.supercode.myproejectdemov3.model.Post;
 import twitter4j.PagableResponseList;
 import twitter4j.ResponseList;
 import twitter4j.Status;
@@ -26,6 +30,8 @@ public class UserServiceImpl
 
     private UserDao userDao;
     private OriginEntryDao oeDao;
+    private PostDao postDao;
+    private LikeDao likeDao;
 
     public UserServiceImpl()
     {
@@ -36,7 +42,7 @@ public class UserServiceImpl
     @Override
     public boolean addListUserUseBatch(PagableResponseList<User> list)
     {
-        return userDao.insertListUserUseBatch(list);
+        return userDao.insertListUseBatch(list);
     }
 
     @Override
@@ -46,15 +52,46 @@ public class UserServiceImpl
     }
 
     @Override
-    public boolean addListOriginEntryUseBatch(ResponseList<Status> list, Long id)
+    public boolean addListPostEntryUseBatch(ResponseList<Status> list, Long id)
     {
-        return oeDao.insertListOriginEntryUseBatch(list, id);
+        return oeDao.insertListPostEntryUseBatch(list, id);
     }
 
     @Override
     public boolean editListOriginEntryUseBatch(ArrayList<OriginEntry> list)
     {
         return oeDao.updateListOriginEntryUseBatch(list);
+    }
+
+    @Override
+    public boolean addListLikeEntryUseBatch(ResponseList<Status> list, Long id)
+    {
+        return oeDao.insertListLikeEntryUseBatch(list, id);
+    }
+
+    @Override
+    public boolean standardList()
+    {
+        return userDao.standardList();
+    }
+
+    @Override
+    public boolean addListCommentLikeEntryUseBatch(ResponseList<Status> list,
+                                                   Long id)
+    {
+        return oeDao.insertListCommentLikeEntryUseBatch(list, id);
+    }
+
+    @Override
+    public Post getPost(Long id)
+    {
+        return postDao.getByUserId(id);
+    }
+
+    @Override
+    public Like getLike(Long id)
+    {
+        return likeDao.getByUserId(id);
     }
 
 }

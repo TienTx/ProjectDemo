@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tientx.supercode.myproejectdemov3.dao;
-
-import tientx.supercode.myproejectdemov3.model.Like;
+package machinelearning;
 
 /**
  *
  * @author zOzDarKzOz
  */
-public interface LikeDao
-{
-
-    Like getByUserId(Long id);
+public interface SentimentTrainingService {
+//    void train(String path);
+    boolean train(String path);
+    String classify(String text);
 }

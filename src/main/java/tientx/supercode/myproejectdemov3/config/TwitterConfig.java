@@ -9,13 +9,14 @@ package tientx.supercode.myproejectdemov3.config;
  *
  * @author zOzDarKzOz
  */
-public class TwitterConfig {
+public class TwitterConfig
+{
 
     public static String API_KEY = "zn0xqgrNUWVtE6a67McisHzDo";
     public static String API_SECRET = "8gfGuLmGVhLDp0xSb6kPAipgHl80vcTMkicbr7IiaS3Ke3H05l";
     public static String ACCES_TOKEN = "988209746-r2hIRmmyIn0gSvMypxidDXC2YA5LFz2wdAiN8oOK";
     public static String ACCES_TOKEN_SECRET = "C7hQ62cqdllj1c7zanQyJUOBFiAV9Xi8to1XxZuzeus04";
-    
+
     public static String PROXY_HOST = "128.199.119.83";
     public static Integer PROXY_PORT = 8080;
 
@@ -25,5 +26,6 @@ public class TwitterConfig {
     public static String USER_FOLLOWER_LIST = "/followers/list";
     public static String USER_SUBCRIBER_LIST = "/lists/subscribers";
     public static String USER_FAVORITES_LIST = "/favorites/list";
+    public static String RETWEETER_ID_LIST = "/statuses/retweeters/ids";
 
 }

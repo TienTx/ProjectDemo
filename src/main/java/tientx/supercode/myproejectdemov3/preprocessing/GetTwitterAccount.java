@@ -14,10 +14,10 @@ import twitter4j.User;
  *
  * @author zOzDarKzOz
  */
-public class Get2000TwitterAccount
+public class GetTwitterAccount
 {
 
-    public static PagableResponseList<User> get(
+    public static PagableResponseList<User> get2000Account(
             TwitterService ts, String originUserScreenName
     )
     {
@@ -42,7 +42,7 @@ public class Get2000TwitterAccount
                     listFollower.addAll(list);
                 }
                 cursor = list.getNextCursor();
-                if (i != 5) {
+                if (i != 10) {
                     Thread.sleep(15000);
                 }
             }
@@ -54,6 +54,43 @@ public class Get2000TwitterAccount
                 System.out.println("-------------------------");
             });
             return listFollower;
+        } catch (TwitterException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static PagableResponseList<User> getAllFriend(
+            TwitterService ts, Long idUser
+    )
+    {
+        try {
+            int i = 1;
+            PagableResponseList<User> listFriend = ts.getTwUserFriendListId(
+                    idUser,
+                    (long) -1,
+                    200
+            );
+            System.out.println("Turn " + i + " : " + listFriend.size());
+            Thread.sleep(15000);
+
+            long cursor = listFriend.getNextCursor();
+            PagableResponseList<User> list;
+            do {
+                list = ts.getTwUserFollowerList(
+                        idUser,
+                        cursor,
+                        200
+                );
+                System.out.println("Turn " + ++i + " : " + list.size());
+                if (list != null && list.size() > 0) {
+                    listFriend.addAll(list);
+                }
+                cursor = list.getNextCursor();
+                Thread.sleep(15000);
+            } while (list != null && list.size() > 0);
+            System.out.println("All : " + listFriend.size());
+            return listFriend;
         } catch (TwitterException | InterruptedException e) {
             e.printStackTrace();
         }

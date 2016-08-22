@@ -13,11 +13,14 @@ import twitter4j.PagableResponseList;
  *
  * @author zOzDarKzOz
  */
-public interface UserDao {
+public interface UserDao
+{
 
-    boolean insertUser(User user);
+    boolean insert(User user);
 
-    boolean insertListUserUseBatch(PagableResponseList<twitter4j.User> list);
+    boolean insertListUseBatch(PagableResponseList<twitter4j.User> list);
 
     ArrayList<User> getAll();
+
+    boolean standardList();
 }

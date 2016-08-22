@@ -27,7 +27,7 @@ import twitter4j.User;
  *
  * @author zOzDarKzOz
  */
-public class Get1stData
+public class Get1stData2
 {
 
     private static final TwitterService TWITTER_SERVICE = new TwitterServiceImpl();
@@ -225,7 +225,7 @@ public class Get1stData
         Date edate = sdf.parse(END_DATE);
 //        Get1stData.preUserData();
 //        Get1stData.prePostingData(sdate, edate);
-        Get1stData.preLikeData(sdate, edate);
-//        Get1stData.preCommentLikeData(sdate, edate);
+//        Get1stData.preLikeData(sdate, edate);
+        Get1stData2.preCommentLikeData(sdate, edate);
     }
 }

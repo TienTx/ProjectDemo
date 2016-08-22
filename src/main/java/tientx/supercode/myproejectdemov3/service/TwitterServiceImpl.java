@@ -5,9 +5,11 @@
  */
 package tientx.supercode.myproejectdemov3.service;
 
+import java.util.List;
 import java.util.Map;
 import tientx.supercode.myproejectdemov3.config.TwitterConfig;
 import tientx.supercode.myproejectdemov3.connection.TwitterConnection;
+import twitter4j.IDs;
 import twitter4j.PagableResponseList;
 import twitter4j.Paging;
 import twitter4j.RateLimitStatus;
@@ -32,7 +34,8 @@ public class TwitterServiceImpl
         twitter = TwitterConnection.getInstanceTwiiter();
     }
 
-    private void overError88(String command) throws TwitterException, InterruptedException
+    private void overError88(String command)
+            throws TwitterException, InterruptedException
     {
         Map<String, RateLimitStatus> temp = twitter.getRateLimitStatus();
         RateLimitStatus temp2 = temp.get(command);
@@ -48,77 +51,51 @@ public class TwitterServiceImpl
     }
 
     @Override
-    public ResponseList<Status> getTwFavorites(String screenName) throws TwitterException, InterruptedException
+    public ResponseList<Status> getTwFavorites(String screenName)
+            throws TwitterException, InterruptedException
     {
-        Paging p = new Paging(1, 500);
         overError88(TwitterConfig.USER_FAVORITES_LIST);
-        return twitter.getFavorites(screenName, p);
-//        System.out.println(listStatus.size());
-//        listStatus.stream().forEach((list) -> {
-//            System.out.println("@" + list.getText());
-//        });
-//        return listStatus;
+        return twitter.getFavorites(screenName);
     }
 
     @Override
-    public ResponseList<Status> getTwFavorites(Long idUser) throws TwitterException, InterruptedException
+    public ResponseList<Status> getTwFavorites(Long idUser)
+            throws TwitterException, InterruptedException
     {
-        Paging p = new Paging(1, 500);
         overError88(TwitterConfig.USER_FAVORITES_LIST);
-        return twitter.getFavorites(idUser, p);
-//        System.out.println(listStatus.size());
-//        listStatus.stream().forEach((list) -> {
-//            System.out.println("@" + list.getText());
-//        });
-//        return listStatus;
+        return twitter.getFavorites(idUser);
     }
 
     @Override
-    public ResponseList<Status> getTwUserTimeline(String screenName) throws TwitterException, InterruptedException
+    public ResponseList<Status> getTwUserTimeline(String screenName)
+            throws TwitterException, InterruptedException
     {
         overError88(TwitterConfig.USER_TIMELINE);
         return twitter.getUserTimeline(screenName);
-//        System.out.println(listStatus.size());
-//        listStatus.stream().forEach((list) -> {
-//            System.out.println("@" + list.getText());
-//        });
-//        return listStatus;
     }
 
     @Override
-    public ResponseList<Status> getTwUserTimeline(Long idUser) throws TwitterException, InterruptedException
+    public ResponseList<Status> getTwUserTimeline(Long idUser)
+            throws TwitterException, InterruptedException
     {
         overError88(TwitterConfig.USER_TIMELINE);
         return twitter.getUserTimeline(idUser);
-//        System.out.println(listStatus.size());
-//        listStatus.stream().forEach((list) -> {
-//            System.out.println("@" + list.getText());
-//        });
-//        return listStatus;
     }
 
     @Override
-    public ResponseList<Status> getTwUserHomeTimeline(String screenName) throws TwitterException, InterruptedException
+    public ResponseList<Status> getTwUserHomeTimeline(String screenName)
+            throws TwitterException, InterruptedException
     {
         overError88(TwitterConfig.USER_HOME_TIMELINE);
         return twitter.getUserTimeline(screenName);
-//        System.out.println(listStatus.size());
-//        listStatus.stream().forEach((list) -> {
-//            System.out.println("@" + list.getText());
-//        });
-//        return listStatus;
     }
 
     @Override
-    public ResponseList<Status> getTwUserHomeTimeline(Long idUser) throws TwitterException, InterruptedException
+    public ResponseList<Status> getTwUserHomeTimeline(Long idUser)
+            throws TwitterException, InterruptedException
     {
         overError88(TwitterConfig.USER_HOME_TIMELINE);
         return twitter.getUserTimeline(idUser);
-//        System.out.println(listStatus.size());
-//        listStatus.stream().forEach((list) -> {
-//            System.out.println("@" + list.getText());
-//        });
-//        return listStatus;
     }
 
     @Override
@@ -127,29 +104,21 @@ public class TwitterServiceImpl
     {
         overError88(TwitterConfig.USER_FRIEND_LIST);
         return twitter.getFriendsList(screenName, 20);
-//        System.out.println(listFriends.size());
-//        listFriends.stream().forEach((list) -> {
-//            System.out.println("@" + list.getId() + " : " + list.getScreenName());
-//        });
-//        return listFriends;
     }
 
     @Override
-    public PagableResponseList<User> getTwUserFriendList(Long idUser) throws TwitterException, InterruptedException
+    public PagableResponseList<User> getTwUserFriendList(Long idUser)
+            throws TwitterException, InterruptedException
     {
         overError88(TwitterConfig.USER_FRIEND_LIST);
         return twitter.getFriendsList(idUser, 20);
-//        System.out.println(listFriends.size());
-//        listFriends.stream().forEach((list) -> {
-//            System.out.println("@" + list.getId() + " : " + list.getScreenName());
-//        });
-//        return listFriends;
     }
 
     @Override
     public PagableResponseList<User> getTwUserFollowerList(String screenName,
                                                            Long cursor,
-                                                           Integer count) throws TwitterException, InterruptedException
+                                                           Integer count)
+            throws TwitterException, InterruptedException
     {
         overError88(TwitterConfig.USER_FOLLOWER_LIST);
         return twitter.getFollowersList(screenName, cursor, count);
@@ -158,14 +127,11 @@ public class TwitterServiceImpl
     @Override
     public PagableResponseList<User> getTwUserFollowerList(Long idUser,
                                                            Long cursor,
-                                                           Integer count) throws TwitterException, InterruptedException
+                                                           Integer count)
+            throws TwitterException, InterruptedException
     {
         overError88(TwitterConfig.USER_FOLLOWER_LIST);
         return twitter.getFollowersList(idUser, cursor, count);
-//        System.out.println(listFollower.size());
-//        listFollower.stream().forEach((list) -> {
-//            System.out.println("@" + list.getId() + " : " + list.getScreenName());
-//        });
     }
 
     @Override
@@ -187,6 +153,54 @@ public class TwitterServiceImpl
         pg.setCount(count);
         overError88(TwitterConfig.USER_HOME_TIMELINE);
         return twitter.getUserTimeline(idUser, pg);
+    }
+
+    @Override
+    public ResponseList<Status> getTwFavorites(String screenName, Integer count)
+            throws TwitterException, InterruptedException
+    {
+        Paging pg = new Paging();
+        pg.setCount(count);
+        overError88(TwitterConfig.USER_FAVORITES_LIST);
+        return twitter.getFavorites(screenName, pg);
+    }
+
+    @Override
+    public ResponseList<Status> getTwFavorites(Long idUser, Integer count)
+            throws TwitterException, InterruptedException
+    {
+        Paging pg = new Paging();
+        pg.setCount(count);
+        overError88(TwitterConfig.USER_FAVORITES_LIST);
+        return twitter.getFavorites(idUser, pg);
+    }
+
+    @Override
+    public PagableResponseList<User> getTwUserFriendListId(String screenName,
+                                                           Long cursor,
+                                                           Integer count)
+            throws TwitterException, InterruptedException
+    {
+        overError88(TwitterConfig.USER_FRIEND_LIST);
+        return twitter.getFriendsList(screenName, cursor, count);
+    }
+
+    @Override
+    public PagableResponseList<User> getTwUserFriendListId(Long idUser,
+                                                           Long cursor,
+                                                           Integer count)
+            throws TwitterException, InterruptedException
+    {
+        overError88(TwitterConfig.USER_FRIEND_LIST);
+        return twitter.getFriendsList(idUser, cursor, count);
+    }
+
+    @Override
+    public IDs getListRetweeterId(Long idStatus, Integer count, Long cursor)
+            throws TwitterException, InterruptedException
+    {
+        overError88(TwitterConfig.RETWEETER_ID_LIST);
+        return twitter.getRetweeterIds(idStatus, count, cursor);
     }
 
 }

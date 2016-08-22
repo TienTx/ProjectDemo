@@ -19,9 +19,16 @@ public interface OriginEntryDao
 
     ArrayList<OriginEntry> getAll();
 
-    boolean insertOriginEntry(OriginEntry oe);
+    boolean insertPostEntry(OriginEntry oe);
 
-    boolean insertListOriginEntryUseBatch(ResponseList<Status> list, Long id);
+    boolean insertLikeEntry(OriginEntry oe);
+
+    boolean insertListPostEntryUseBatch(ResponseList<Status> list, Long id);
+
+    boolean insertListLikeEntryUseBatch(ResponseList<Status> list, Long id);
+
+    boolean insertListCommentLikeEntryUseBatch(ResponseList<Status> list,
+                                               Long id);
 
     boolean updateListOriginEntryUseBatch(ArrayList<OriginEntry> list);
 }

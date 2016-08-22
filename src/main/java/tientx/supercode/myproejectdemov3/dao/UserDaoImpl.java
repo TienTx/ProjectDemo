@@ -15,15 +15,19 @@ import twitter4j.PagableResponseList;
  *
  * @author zOzDarKzOz
  */
-public class UserDaoImpl extends BaseDao implements UserDao {
+public class UserDaoImpl
+        extends BaseDao
+        implements UserDao
+{
 
     private PreparedStatement ps = null;
     private ResultSet rs = null;
 
     @Override
-    public boolean insertUser(User user) {
+    public boolean insert(User user)
+    {
         String sqlInsert = "INSERT INTO tblUser(idUser, screenName) "
-                + "VALUES(?, ?);";
+                           + "VALUES(?, ?);";
         try {
             ps = conn.prepareStatement(sqlInsert);
             ps.setString(1, user.getIdUser());
@@ -45,10 +49,11 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public boolean insertListUserUseBatch(PagableResponseList<twitter4j.User> list) {
+    public boolean insertListUseBatch(PagableResponseList<twitter4j.User> list)
+    {
         boolean isError = false;
         String sqlInsert = "INSERT INTO tblUser(idUser, screenName) "
-                + "VALUES(?, ?);";
+                           + "VALUES(?, ?);";
         try {
             ps = conn.prepareStatement(sqlInsert);
             list.stream().forEach((l) -> {
@@ -83,7 +88,8 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public ArrayList<User> getAll() {
+    public ArrayList<User> getAll()
+    {
         String sqlSelect = "SELECT * FROM tblUser;";
         try {
             ps = conn.prepareStatement(sqlSelect);
@@ -113,6 +119,12 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean standardList()
+    {
+        return false;
     }
 
 }

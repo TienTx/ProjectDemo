@@ -6,7 +6,9 @@
 package tientx.supercode.myproejectdemov3.service;
 
 import java.util.ArrayList;
+import tientx.supercode.myproejectdemov3.model.Like;
 import tientx.supercode.myproejectdemov3.model.OriginEntry;
+import tientx.supercode.myproejectdemov3.model.Post;
 import twitter4j.PagableResponseList;
 import tientx.supercode.myproejectdemov3.model.User;
 import twitter4j.ResponseList;
@@ -23,7 +25,17 @@ public interface UserService
 
     ArrayList<User> getAll();
 
-    boolean addListOriginEntryUseBatch(ResponseList<Status> list, Long id);
+    boolean addListPostEntryUseBatch(ResponseList<Status> list, Long id);
+
+    boolean addListLikeEntryUseBatch(ResponseList<Status> list, Long id);
+
+    boolean addListCommentLikeEntryUseBatch(ResponseList<Status> list, Long id);
 
     boolean editListOriginEntryUseBatch(ArrayList<OriginEntry> list);
+
+    boolean standardList();
+
+    Post getPost(Long id);
+
+    Like getLike(Long id);
 }

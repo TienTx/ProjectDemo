@@ -25,10 +25,9 @@ public class OriginEntryDaoImpl
     private ResultSet rs = null;
 
     @Override
-    public boolean insertOriginEntry(OriginEntry oe)
+    public boolean insertPostEntry(OriginEntry oe)
     {
         String sqlInsert = "SET NAMES utf8mb4;INSERT INTO tblOriginEntry("
-                           //        String sqlInsert = "INSERT INTO tblOriginEntry("
                            + "idOriginEntry, createDate, content, idUser"
                            + ") VALUES(?, ?, ?, ?);";
         try {
@@ -54,8 +53,8 @@ public class OriginEntryDaoImpl
     }
 
     @Override
-    public boolean insertListOriginEntryUseBatch(ResponseList<Status> list,
-                                                 Long id)
+    public boolean insertListPostEntryUseBatch(ResponseList<Status> list,
+                                               Long id)
     {
         boolean isError = false;
         String sqlInsert = "INSERT INTO tblOriginEntry("
@@ -144,14 +143,22 @@ public class OriginEntryDaoImpl
     @Override
     public ArrayList<OriginEntry> getAll()
     {
-        String sqlSelect = "SELECT * FROM tblOriginEntry;";
+        String sqlSelect = "SELECT "
+                           + "idOriginEntry, "
+                           + "createDate, "
+                           + "content, "
+                           + "idUser, "
+                           + "category, "
+                           + "sentiment, "
+                           + "type "
+                           + "FROM tblOriginEntry;";
         try {
             ps = conn.prepareStatement(sqlSelect);
             rs = getData(ps);
             if (rs != null) {
                 ArrayList<OriginEntry> list = new ArrayList<>();
                 while (rs.next()) {
-                    OriginEntry oe = new OriginEntry(rs.getString(1), rs.getDate(2), rs.getString(3), rs.getString(4), null, rs.getString(6));
+                    OriginEntry oe = new OriginEntry(rs.getString(1), rs.getDate(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
                     list.add(oe);
                 }
                 if (list != null) {
@@ -173,6 +180,127 @@ public class OriginEntryDaoImpl
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean insertLikeEntry(OriginEntry oe)
+    {
+        String sqlInsert = "SET NAMES utf8mb4;INSERT INTO tblOriginEntry("
+                           + "idOriginEntry, createDate, content, idUser, type"
+                           + ") VALUES(?, ?, ?, ?, ?);";
+        try {
+            ps = conn.prepareStatement(sqlInsert);
+            ps.setString(1, oe.getIdOriginEntry());
+            ps.setDate(2, oe.getCreateDate());
+            ps.setString(3, oe.getsContent());
+            ps.setString(4, oe.getIdUser());
+            ps.setInt(5, 2);
+
+            return insert(ps);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean insertListLikeEntryUseBatch(ResponseList<Status> list,
+                                               Long id)
+    {
+        boolean isError = false;
+        String sqlInsert = "INSERT INTO tblOriginEntry("
+                           + "idOriginEntry, createDate, content, idUser, type"
+                           + ") VALUES(?, ?, ?, ?, ?);";
+        try {
+            ps = conn.prepareStatement(sqlInsert);
+            list.stream().forEach((l) -> {
+                try {
+                    ps.setString(1, l.getId() + "");
+                    java.util.Date utilDate = l.getCreatedAt();
+                    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                    ps.setDate(2, sqlDate);
+                    ps.setString(3, l.getText());
+                    ps.setString(4, id + "");
+                    ps.setInt(5, 2);
+                    ps.addBatch();
+                    ps.clearParameters();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+            int[] kq = ps.executeBatch();
+            if (kq != null && kq.length > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            isError = true;
+        } finally {
+            try {
+                if (isError) {
+                    conn.rollback();
+                } else {
+                    conn.commit();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean insertListCommentLikeEntryUseBatch(ResponseList<Status> list,
+                                                      Long id)
+    {
+        boolean isError = false;
+        String sqlInsert = "INSERT INTO tblOriginEntry("
+                           + "idOriginEntry, createDate, content, idUser, type"
+                           + ") VALUES(?, ?, ?, ?, ?);";
+        try {
+            ps = conn.prepareStatement(sqlInsert);
+            list.stream().forEach((l) -> {
+                try {
+                    ps.setString(1, l.getId() + "");
+                    java.util.Date utilDate = l.getCreatedAt();
+                    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                    ps.setDate(2, sqlDate);
+                    ps.setString(3, l.getText());
+                    ps.setString(4, id + "");
+                    ps.setInt(5, 3);
+                    ps.addBatch();
+                    ps.clearParameters();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+            int[] kq = ps.executeBatch();
+            if (kq != null && kq.length > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            isError = true;
+        } finally {
+            try {
+                if (isError) {
+                    conn.rollback();
+                } else {
+                    conn.commit();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
 
 }

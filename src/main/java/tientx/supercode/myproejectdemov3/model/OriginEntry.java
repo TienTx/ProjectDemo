@@ -22,6 +22,7 @@ public class OriginEntry
     private String idUser;
     private String sCategory;
     private String sSentiment;
+    private Integer iType;
 
     public OriginEntry()
     {
@@ -87,8 +88,19 @@ public class OriginEntry
         this.sSentiment = sSentiment;
     }
 
+    public Integer getiType()
+    {
+        return iType;
+    }
+
+    public void setiType(Integer iType)
+    {
+        this.iType = iType;
+    }
+
     public OriginEntry(String idOriginEntry, Date createDate, String sContent,
-                       String idUser, String sCategory, String sSentiment)
+                       String idUser, String sCategory, String sSentiment,
+                       Integer iType)
     {
         this.idOriginEntry = idOriginEntry;
         this.createDate = createDate;
@@ -96,5 +108,6 @@ public class OriginEntry
         this.idUser = idUser;
         this.sCategory = sCategory;
         this.sSentiment = sSentiment;
+        this.iType = iType;
     }
 }
