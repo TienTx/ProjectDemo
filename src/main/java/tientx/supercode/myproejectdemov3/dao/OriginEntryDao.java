@@ -19,6 +19,10 @@ public interface OriginEntryDao
 
     ArrayList<OriginEntry> getAll();
 
+    ArrayList<OriginEntry> getAllPost();
+
+    ArrayList<OriginEntry> getAllLike();
+
     boolean insertPostEntry(OriginEntry oe);
 
     boolean insertLikeEntry(OriginEntry oe);

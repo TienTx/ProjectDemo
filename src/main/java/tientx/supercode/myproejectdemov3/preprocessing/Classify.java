@@ -87,45 +87,27 @@ public class Classify
             ex.printStackTrace();
         }
     }
-    
+
     private static void classify()
     {
         try {
-            ArrayList<OriginEntry> listContent = oed.getAll();
+//            ArrayList<OriginEntry> listContent = oed.getAll();
+            ArrayList<OriginEntry> listContent = oed.getAllLike();
             int l = listContent.size();
-            int k = 0;
-            int size = 0;
-            while (k < l) {
-                ArrayList<OriginEntry> list = new ArrayList<>();
-                if (k + 100 < l) {
-                    size = k + 100;
-                } else {
-                    size = l;
-                }
-                for (int i = k; i < size; i++) {
-                    list.add(listContent.get(i));
-                }
-                int j = 1;
-                for (OriginEntry content : list) {
-                    String text = content.getsContent();
-                    String cat = ct.classify(text);
-                    String sent = st.classify(text);
-                    System.out.println(j + "--------Category: " + cat + "\tSentiment: " + sent);
-                    content.setsCategory(cat);
-                    content.setsSentiment(sent);
-                    j++;
-                }
-                boolean isOK = us.editListOriginEntryUseBatch(listContent);
-                if (isOK) {
-                    System.out.println("Updated!");
-                } else {
-                    System.out.println("Update Fail");
-                }
-                System.out.print("-------------------------------------" + k + "->");
-                k += 100;
-                System.out.println(k);
+            for (int i = 0; i < l; i++) {
+                String text = listContent.get(i).getsContent();
+                String cat = ct.classify(text);
+                String sent = st.classify(text);
+                System.out.println((i + 1) + "--------Category: " + cat + "\tSentiment: " + sent);
+                listContent.get(i).setsCategory(cat);
+                listContent.get(i).setsSentiment(sent);
             }
-
+            boolean isOK = us.editListOriginEntryUseBatch(listContent);
+            if (isOK) {
+                System.out.println("Updated!");
+            } else {
+                System.out.println("Update Fail");
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }

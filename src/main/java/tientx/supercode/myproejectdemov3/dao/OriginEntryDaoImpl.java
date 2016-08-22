@@ -303,4 +303,90 @@ public class OriginEntryDaoImpl
         return false;
     }
 
+    @Override
+    public ArrayList<OriginEntry> getAllPost()
+    {
+        String sqlSelect = "SELECT "
+                           + "idOriginEntry, "
+                           + "createDate, "
+                           + "content, "
+                           + "idUser, "
+                           + "category, "
+                           + "sentiment, "
+                           + "type "
+                           + "FROM tblOriginEntry "
+                           + "WHERE type=1;";
+        try {
+            ps = conn.prepareStatement(sqlSelect);
+            rs = getData(ps);
+            if (rs != null) {
+                ArrayList<OriginEntry> list = new ArrayList<>();
+                while (rs.next()) {
+                    OriginEntry oe = new OriginEntry(rs.getString(1), rs.getDate(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                    list.add(oe);
+                }
+                if (list != null) {
+                    return list;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public ArrayList<OriginEntry> getAllLike()
+    {
+        String sqlSelect = "SELECT "
+                           + "idOriginEntry, "
+                           + "createDate, "
+                           + "content, "
+                           + "idUser, "
+                           + "category, "
+                           + "sentiment, "
+                           + "type "
+                           + "FROM tblOriginEntry "
+                           + "WHERE type=2;";
+        try {
+            ps = conn.prepareStatement(sqlSelect);
+            rs = getData(ps);
+            if (rs != null) {
+                ArrayList<OriginEntry> list = new ArrayList<>();
+                while (rs.next()) {
+                    OriginEntry oe = new OriginEntry(rs.getString(1), rs.getDate(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                    list.add(oe);
+                }
+                if (list != null) {
+                    return list;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
 }
